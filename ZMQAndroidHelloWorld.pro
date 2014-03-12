@@ -11,6 +11,11 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     subscribertest.cpp
 
+HEADERS += \
+    subscribertest.h
+
+PROTOS += testmsg.proto
+
 INCLUDEPATH += \
     /home/alexander/projects/nzmqt/include \
     /home/alexander/projects/nzmqt/externals/include
@@ -18,7 +23,7 @@ INCLUDEPATH += \
 # Installation path
 # target.path =
 
-LIBS += -lzmq -lnzmqt
+LIBS += -lzmq -lnzmqt -lprotobuf
 
 android: {
 LIBS += -L/opt/zeromq-android/lib/ -L/home/alexander/ownCloud/Arbeit/BBB_RepRap/Remote_Components/nzmqt/bin/android/
@@ -30,7 +35,5 @@ LIBS += -L/home/alexander/ownCloud/Arbeit/BBB_RepRap/Remote_Components/nzmqt/bin
 
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick2controlsapplicationviewer/qtquick2controlsapplicationviewer.pri)
+include(protobuf.pri)
 qtcAddDeployment()
-
-HEADERS += \
-    subscribertest.h
