@@ -1,4 +1,5 @@
 #include "subscribertest.h"
+#include "testmsg.pb.h"
 
 SubscriberTest::SubscriberTest(QQuickItem *parent) :
     QQuickItem(parent)
@@ -22,10 +23,14 @@ SubscriberTest::SubscriberTest(QQuickItem *parent) :
 void SubscriberTest::pingReceived(const QList<QByteArray> &message)
 {
     QString newMessage;
+    pb::Container container;
 
     foreach (QByteArray bytes, message)
     {
         newMessage.append(QString(bytes) + ", ");
+        qDebug() << bytes;
+        container.ParseFromString(QString(bytes).toStdString());
+        qDebug() << container.pin_size() << container.note_size();
     }
 
     qDebug() << newMessage;

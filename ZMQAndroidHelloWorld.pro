@@ -26,8 +26,11 @@ INCLUDEPATH += \
 LIBS += -lzmq -lnzmqt -lprotobuf
 
 android: {
-LIBS += -L/opt/zeromq-android/lib/ -L/home/alexander/ownCloud/Arbeit/BBB_RepRap/Remote_Components/nzmqt/bin/android/
-INCLUDEPATH += /opt/zeromq-android/include/
+LIBS += -L/opt/zeromq-android/lib/ \
+        -L/home/alexander/ownCloud/Arbeit/BBB_RepRap/Remote_Components/nzmqt/bin/android/ \
+        -L/home/alexander/projects/tmp/protobuf-2.5.0/src/.libs/
+INCLUDEPATH += /opt/zeromq-android/include/ \
+            /home/alexander/projects/tmp/protobuf-2.5.0/src/
 }
 else: {
 LIBS += -L/home/alexander/ownCloud/Arbeit/BBB_RepRap/Remote_Components/nzmqt/bin/
